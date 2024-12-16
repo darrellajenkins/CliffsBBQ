@@ -11,7 +11,7 @@ from admin import Reports
 
 today = time.ctime()
 today_date = time.strftime('%B %d %Y')
-today_time = time.strftime('%I:%M:%S %p')
+today_time = time.strftime('%H:%M:%S %p')
 
 class Visitors:
     """This is the core of the entire system. Visitors to the store are the most important part so everything begins here."""
@@ -27,7 +27,7 @@ class Visitors:
     fam_rand_select = random.choice([fam_coupon, fam_appreciate, fam_appreciate, fam_appreciate])
     date_coupon = 'As a special thanks to the two of you, ' + discount_2
     date_appreciate = "We appreciate the two of you sharing fun time together at Cliff's BBQ Stand!"
-    date_rand_select = random.choice([date_coupon, date_appreciate])
+    date_rand_select = random.choice([date_coupon, date_coupon, date_coupon, date_coupon, date_appreciate])
     weekly_coupon = 'Thank you for your customer loyalty, ' + discount_3
     weekly_appreciate = 'You are a valued customer and we truly appreciate your regular visits to our shop! We hope you will bring a friend to share the fun!'
     weekly_rand_select = random.choice([weekly_coupon, weekly_appreciate])
