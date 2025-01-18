@@ -8,9 +8,10 @@ import funcs
 
 
 today = time.ctime()
-today_date = time.strftime('%B %d %Y')
+today_date = time.strftime('%B %d, %Y')
 today_time = time.strftime('%I:%M:%S %p')
 
+curr_yr = time.strftime('%Y')
 
 class Survey:
 
@@ -25,7 +26,13 @@ class Survey:
         return f'Survey data: {self.location}. Name: {self.survey_results}'
 
     def locate(self):
-        location = input("Please enter the location (city/town) of the store you visited today: ").lower()
+        while True:
+            location = input("Please enter the location (city/town) of the store you visited today: ").lower()
+            if not location[0].isalpha():
+                print("Please enter a valid name of the city or town. If the name truly contains a number, please spell out the number.")
+                continue
+            else:
+                break
         return location.title()
 
     def three_ques(self):
@@ -48,8 +55,9 @@ class Survey:
         connection.sendmail(from_addr=my_gmail, to_addrs=email,
                              msg=f"Subject:Cliff's BBQ StandSurvey\n\nDear Valued Customer,\n\nThank you for filling out our anonymous survey. We would appreciate "
                                  f"hearing more about your experience. A manager will be contacting you soon.\n\n"
-                                 f"In the meantime, please enjoy $2 off on your next visit to any of our stores! Coupon code: {voucher_id}. Good until Dec. 31, 2024.\n\n"
-                                 f"Sincerely,\n\nPatty Cake Lamb\n570-846-0788")
+                                 f"In the meantime, please enjoy $2 off on your next visit to any of our stores! Coupon code: {voucher_id}. Good until Dec. "
+                                 f"31, {curr_yr}.\n\n"
+                                 f"Sincerely,\n\nPatty Cake Lamb\n360-800-0000")
         connection.quit()
         return voucher_id, email
 
@@ -153,7 +161,7 @@ class Coupon:
         connection.login(user=my_gmail, password=password)
         connection.sendmail(from_addr=my_gmail, to_addrs=email,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
-                                 f"{discount} Coupon code: {voucher_id}. Good until Dec. 31, 2024.\n\nSincerely,\n\nCliff's BBQ Stand Management\n570-846-0788")
+                                 f"{discount} Coupon code: {voucher_id}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand Management\n570-846-0788")
         connection.quit()
 
     def companion_voucher(self, capture_both_coupon_emails):
@@ -172,8 +180,10 @@ class Coupon:
         connection.login(user=my_gmail, password=password)
         connection.sendmail(from_addr=my_gmail, to_addrs=email_1,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
-                                 f"{discount} Coupon code: {voucher_id1}. Good until Dec. 31, 2024.\n\nSincerely,\n\nCliff's BBQ Stand Management\n570-846-0788")
+                                 f"{discount} Coupon code: {voucher_id1}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand "
+                                 f"Management\n570-846-0788")
         connection.sendmail(from_addr=my_gmail, to_addrs=email_2,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
-                                 f"{discount} Coupon code: {voucher_id2}. Good until Dec. 31, 2024.\n\nSincerely,\n\nCliff's BBQ Stand Management\n570-846-0788")
+                                 f"{discount} Coupon code: {voucher_id2}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand "
+                                 f"Management\n570-846-0788")
         connection.quit()

@@ -10,8 +10,8 @@ from funcs import clr, bold, blk, italic, red, green, yellow, blue, purple, cyan
 from admin import Reports
 
 today = time.ctime()
-today_date = time.strftime('%B %d %Y')
-today_time = time.strftime('%H:%M:%S %p')
+today_date = time.strftime('%B %d, %Y')
+today_time = time.strftime('%I:%M:%S %p')
 
 class Visitors:
     """This is the core of the entire system. Visitors to the store are the most important part so everything begins here."""
@@ -70,14 +70,15 @@ class Visitors:
         self.credit_card_name = ""
 
     def thanks(self):
+        exact_time = time.strftime('%H:%M:%S %p')
         tod = ""
-        if today_time <= '11:59':
+        if exact_time <= '11:59':
             tod = 'this morning'
-        elif today_time <= '17:29':
+        elif exact_time <= '17:29':
             tod = 'this afternoon'
-        elif today_time <= '19:29':
+        elif exact_time <= '19:29':
             tod = 'this evening'
-        elif today_time <= '23:59':
+        elif exact_time <= '23:59':
             tod = 'tonight'
         return f"\nThank you for visiting Cliff's BBQ Stand {tod}!"
 
@@ -170,8 +171,8 @@ class Visitors:
                 break
             elif hear.lower() == 'n':
                 self.signed_up = False
-                order_vs_cc = f"Orderer = {self.orderer_name()}.  Credit card holder = {self.credit_card_name}. Email subscriber? = {self.signed_up}"
-                non_cust_tup = (self.orderer_name(), order_vs_cc, today, today_date, self.reason, self.order_details)
+                order_vs_cc = f"Orderer = {self.orderer_name()}. Credit card holder = {self.credit_card_name}. Email Subscriber? = {self.signed_up}."
+                non_cust_tup = (self.orderer_name(), order_vs_cc, today_date, today_time, self.reason, self.order_details)
                 Visitors.non_subscriber_info.append(non_cust_tup)
                 self.write_file_no_signups(non_cust_tup)
                 print(self.comeback())
@@ -211,8 +212,9 @@ class Visitors:
                 email = input(f"Please enter your email address {your_name}: ")
                 sub_name = your_name
                 subscriber = "another person"
-        order_vs_cc = f"Orderer = {self.orderer_name()}.  Credit card holder = {self.credit_card_name}."
-        curr_info_tup = (sub_name.title(), order_vs_cc, f"{subscriber = }", email, today, today_time, self.reason, self.order_details)
+        self.signed_up = True
+        order_vs_cc = f"Orderer = {self.orderer_name()}. Credit card holder = {self.credit_card_name}. Email Subscriber? = {self.signed_up}."
+        curr_info_tup = (sub_name.title(), order_vs_cc, f"Subscriber = {subscriber}.", email, today_date, today_time, self.reason, self.order_details)
         Visitors.subscriber_info.append(curr_info_tup)
         return curr_info_tup
 

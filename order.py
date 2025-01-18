@@ -24,7 +24,7 @@ class CustOrder:
             if place.lower() == 'y':
                 self.cust_id = str(uuid4())
                 print("Please enter the following information: ")
-                self.first, self.last, self.order = input("\nFirst name: "), input("\nLast name: "), input("\nOrder: ")
+                self.first, self.last, self.order = input("\nFirst name: ").strip(), input("\nLast name: ").strip(), input("\nOrder: ").strip()
                 while True:
                     print(f"Your name is: {self.first} {self.last}, and your order is: {self.order}. Is this correct?")
                     yn = input("\t[Y]es, [N]o to go back and edit everything, or [C] to change only your order: ")

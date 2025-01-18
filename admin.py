@@ -87,11 +87,11 @@ class Reports:
         month, day, year = date[0], date[1], date[2]
         date_text = f"{month} {day}, {year}"
         try:
-            with open(f"daily_custs_{month} {day} {year}.txt", 'r') as file_4:
+            with open(f"daily_custs_{date_text}.txt", 'r') as file_4:
                 contents = file_4.read()
                 print(f"{bold}{yellow}\nHere is a list containing details of each customer who placed an order at one of our stores on {date_text}.{clr}")
                 print(f"\n{contents}")
-            with open(f"daily_custs_{month} {day} {year}.txt", 'r') as file_4a:
+            with open(f"daily_custs_{date_text}.txt", 'r') as file_4a:
                 for e, line in enumerate(file_4a, start=1):
                     pass
                 print(f"\n{bold}{yellow}There was a total of {e} customer order(s) on {date_text}.{clr}")
@@ -103,7 +103,7 @@ class Reports:
         month, day, year = date[0], date[1], date[2]
         date_text = f"{month} {day}, {year}"
         try:
-            with open(f"reasons_daily_dict_{month} {day} {year}.txt") as file_5:
+            with open(f"reasons_daily_dict_{date_text}.txt") as file_5:
                 contents = file_5.read()
                 print(f"{bold}{purple}\nHere is a summary of the reasons that brought our customers into one of our stores on {date_text}.{clr}\n")
                 reasons = json.loads(contents)
@@ -120,11 +120,11 @@ class Reports:
         month, day, year = date[0], date[1], date[2]
         date_text = f"{month} {day}, {year}"
         try:
-            with open(f"surveys_stamped_{month} {day} {year}.txt") as file_6:
+            with open(f"surveys_stamped_{date_text}.txt") as file_6:
                 contents = file_6.read()
                 print(f"{bold}{cyan}\nHere are all of the customer surveys submitted on {date_text}.{clr}")
                 print(f"\n{contents}")
-            with open(f"surveys_stamped_{month} {day} {year}.txt", 'r') as file_6a:
+            with open(f"surveys_stamped_{date_text}.txt", 'r') as file_6a:
                 for e, line in enumerate(file_6a, start=1):
                     pass
                 print(f"{bold}{cyan}There was a total of {e} customer survey(s) submitted on {date_text}.{clr}")
@@ -136,11 +136,11 @@ class Reports:
         month, day, year = date[0], date[1], date[2]
         date_text = f"{month} {day}, {year}"
         try:
-            with open(f"surveys_cust_details_{month} {day} {year}.txt") as file_8:
+            with open(f"surveys_cust_details_{date_text}.txt") as file_8:
                 contents = file_8.read()
                 print(f"{bold}{cyan}\nHere are all details related to customers who asked to be contacted about their survey submitted on {date_text}.{clr}")
                 print(f"\n{contents}")
-            with open(f"surveys_cust_details_{month} {day} {year}.txt", 'r') as file_8a:
+            with open(f"surveys_cust_details_{date_text}.txt", 'r') as file_8a:
                 for e, line in enumerate(file_8a, start=1):
                     pass
                 print(f"{bold}{cyan}There was a total of {e} customer(s) who asked to be contacted about their survey(s) submitted on {date_text}.{clr}")
@@ -151,11 +151,11 @@ class Reports:
         month, day, year = date[0], date[1], date[2]
         date_text = f"{month} {day}, {year}"
         try:
-            with open(f"daily_vouchers_{month} {day} {year}.txt") as file_7:
+            with open(f"daily_vouchers_{date_text}.txt") as file_7:
                 contents = file_7.read()
                 print(f"{bold}{red}\nHere is a list of all coupons that were issued on {date_text}.{clr}")
                 print(f"\n{contents}")
-            with open(f"daily_vouchers_{month} {day} {year}.txt", 'r') as file_7a:
+            with open(f"daily_vouchers_{date_text}.txt", 'r') as file_7a:
                 for e, line in enumerate(file_7a, start=1):
                     pass
                 print(f"{bold}{cyan}There was a total of {e} separate coupon(s) issued on {date_text}.{clr}")
