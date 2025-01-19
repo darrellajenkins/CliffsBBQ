@@ -161,7 +161,7 @@ class Coupon:
         connection.login(user=my_gmail, password=password)
         connection.sendmail(from_addr=my_gmail, to_addrs=email,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
-                                 f"{discount} Coupon code: {voucher_id}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand Management\n570-846-0788")
+                                 f"{discount} Coupon code: {voucher_id}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand Management\n360-800-0000")
         connection.quit()
 
     def companion_voucher(self, capture_both_coupon_emails):
@@ -181,9 +181,9 @@ class Coupon:
         connection.sendmail(from_addr=my_gmail, to_addrs=email_1,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
                                  f"{discount} Coupon code: {voucher_id1}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand "
-                                 f"Management\n570-846-0788")
+                                 f"Management\n360-800-0000")
         connection.sendmail(from_addr=my_gmail, to_addrs=email_2,
                              msg=f"Subject:Cliff's BBQ StandVoucher\n\nDear Valued Customer,\n\nThank you for visiting Cliff's BBQ Stand!\n\n"
                                  f"{discount} Coupon code: {voucher_id2}. Good until Dec. 31, {curr_yr}.\n\nSincerely,\n\nCliff's BBQ Stand "
-                                 f"Management\n570-846-0788")
+                                 f"Management\n360-800-0000")
         connection.quit()
