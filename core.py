@@ -172,7 +172,7 @@ class Visitors:
             elif hear.lower() == 'n':
                 self.signed_up = False
                 order_vs_cc = f"Orderer = {self.orderer_name()}. Credit card holder = {self.credit_card_name}. Email Subscriber? = {self.signed_up}."
-                non_cust_tup = (self.orderer_name(), order_vs_cc, today_date, today_time, self.reason, self.order_details)
+                non_cust_tup = (self.orderer_name(), order_vs_cc, self.order_date, self.order_time, self.reason, self.order_details)
                 Visitors.non_subscriber_info.append(non_cust_tup)
                 self.write_file_no_signups(non_cust_tup)
                 print(self.comeback())
@@ -214,7 +214,7 @@ class Visitors:
                 subscriber = "another person"
         self.signed_up = True
         order_vs_cc = f"Orderer = {self.orderer_name()}. Credit card holder = {self.credit_card_name}. Email Subscriber? = {self.signed_up}."
-        curr_info_tup = (sub_name.title(), order_vs_cc, f"Subscriber = {subscriber}.", email, today_date, today_time, self.reason, self.order_details)
+        curr_info_tup = (sub_name.title(), order_vs_cc, f"Subscriber = {subscriber}.", email, self.order_date, self.order_time, self.reason, self.order_details)
         Visitors.subscriber_info.append(curr_info_tup)
         return curr_info_tup
 
@@ -258,7 +258,10 @@ def new_session():
     if start.lower() == 'b':
         a = Visitors()
         a.new_cust = order.CustOrder()
-        a.order_details = a.new_cust.run_order()
+        a.all_order_details = a.new_cust.run_order()
+        a.order_details = a.all_order_details[0:-2]
+        a.order_date = a.all_order_details[-2]
+        a.order_time = a.all_order_details[-1]
         cc_pay = run_payment()
         name_on_credit_card = cc_pay
         a.credit_card_name = name_on_credit_card

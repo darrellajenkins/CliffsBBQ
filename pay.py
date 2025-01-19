@@ -76,7 +76,8 @@ def run_payment():
     credit = credit_name()
 
     while True:
-        month_and_year = input(f"Please enter the card's expiration 2-digit month and 2-digit year (separated by a '/', for example < {bold}01/30{clr} >: ")
+        month_and_year = input(f"Please enter the card's expiration 2-digit month and 2-digit year (separated by a '/', for example < {bold}{red}01/30{clr} "
+                               f">: ")
         month_entered = month_and_year[0:2]
         year_entered = month_and_year[3:5]
 

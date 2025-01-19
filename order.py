@@ -1,6 +1,7 @@
 from uuid import uuid4
-import sys
 from funcs import clr, bold, blk, italic, red, green, yellow, blue, purple, cyan
+import sys
+import time
 
 
 class CustOrder:
@@ -10,6 +11,8 @@ class CustOrder:
         self.first = ""
         self.last = ""
         self.order = ""
+        self.order_date = None
+        self.order_time = None
 
     def __repr__(self):
         return f'Instance is associated with Class {type(self).__name__} = <__main__.CustOrder object at {hex(id(self))}>'
@@ -17,7 +20,13 @@ class CustOrder:
     def __str__(self):
         return f'Customer Account Number: {self.cust_id}. Name: {self.first.title()} {self.last.title()}.  Order: {self.order}'
 
-    def run_order(self):
+    def run_order(self, order_date=None, order_time=None):
+        self.order_date = order_date
+        self.order_time = order_time
+        if self.order_date is None:
+            self.order_date = time.strftime('%B %d, %Y')
+        if self.order_time is None:
+            self.order_time = time.strftime('%I:%M:%S %p')
         ccb = False
         while True:
             place = input("Would you like to place an order? [Y]es, [N]o or [E]xit ")
@@ -31,12 +40,12 @@ class CustOrder:
                     if yn.lower() == 'n':
                         break
                     if yn.lower() == 'y':
-                        visitor = (f"Customer id: {self.cust_id}", self.first, self.last, self.order)
+                        visitor = (f"Customer id: {self.cust_id}", self.first, self.last, self.order, self.order_date, self.order_time)
                         return visitor
                     if yn.lower() == 'c':
                         re_order = input("Please enter your corrected order: ")
                         self.order = re_order
-                        visitor = (f"Customer id: {self.cust_id}", self.first, self.last, self.order)
+                        visitor = (f"Customer id: {self.cust_id}", self.first, self.last, self.order, self.order_date, self.order_time)
                         return visitor
                     if yn != 'y'.lower()  and yn != 'n'.lower() and yn != 'c'.lower():
                         print(f"{bold}{blue}Please enter{clr}{red}{bold} 'Y'{clr}, {red}{bold}'N'{clr}, or {red}{bold}'C'{clr}")
