@@ -242,6 +242,11 @@ class Visitors:
         with open(f"reasons_daily_dict_{today_date}.txt", "w") as file:
             file.write(json.dumps(daily_totals, indent=4))
 
+    def save_subscriber(self, name, subscribe_date, email):
+        subscriber = [name, subscribe_date, email]
+        with open(f"all_subscribers.txt", "a") as file:
+            file.write(f"{subscriber}\n")
+
     def voucher_reasons(self):
         if self.discount_given():
             return Visitors.response_to_reasons[self.visit_reason()]
@@ -288,6 +293,7 @@ def new_session():
         if Visitors.subscriber_info:
             a.save_cust_info(Visitors.subscriber_info)
             a.save_reasons_daily(Visitors.reasons_daily_totals)
+            a.save_subscriber(Visitors.subscriber_info[0][0], Visitors.subscriber_info[0][3], Visitors.subscriber_info[0][4])
             a_survey = post.Survey()
             a_survey.survey_willingness()
 
@@ -325,9 +331,12 @@ def new_session():
         r = Reports()
         same_date = None
         while True:
-            reports = input(f"\nReport {yellow}[c]ustomers,{clr} {cyan}[r]easons,{clr} {red}[s]urveys,{clr} {green}[v]ouchers,{clr} {purple} [d]etails on surveys,{clr} [p]revious menu, or [e]xit? ")
+            reports = input(f"\nReport {yellow}[c]ustomers,{clr} {cyan}[r]easons,{clr} {red}[s]urveys,{clr} {green}[v]ouchers,{clr} {purple} [d]etails on "
+                            f"surveys,{clr} {blue}[a]ll email subscribers,{clr} [p]revious menu, or [e]xit? ")
             if reports.lower() == 'e':
                 sys.exit()
+            elif reports.lower() == 'a':
+                r.subscribers()
             elif reports.lower() == 'c':
                 if same_date:
                     while True:
@@ -426,8 +435,9 @@ def new_session():
             elif reports.lower() == 'p':
                 new_session()
                 break
-            elif reports.lower() != 'c' or reports.lower() != 'r' or reports.lower() != 's' or reports.lower() != 'v':
+            # elif reports.lower() != 'c' or reports.lower() != 'r' or reports.lower() != 's' or reports.lower() != 'v':  # Why didn't you include 'd'?
+            #     continue
+            else:
                 continue
-
 
 new_session()

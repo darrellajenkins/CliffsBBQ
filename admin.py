@@ -161,3 +161,12 @@ class Reports:
                 print(f"{bold}{cyan}There was a total of {e} separate coupon(s) issued on {date_text}.{clr}")
         except FileNotFoundError:
             print(f"\nNo coupons were issued on {date_text}.")
+
+    def subscribers(self):
+        try:
+            with open(f"all_subscribers.txt") as file_8:
+                contents = file_8.read()
+                print(f"{bold}{purple}\nHere is a list of all current email subscribers:{clr}")
+                print(f"\n{contents}")
+        except FileNotFoundError:
+            print(f"\nFile not found. It may have been moved or deleted.")
