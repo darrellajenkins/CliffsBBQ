@@ -435,8 +435,6 @@ def new_session():
             elif reports.lower() == 'p':
                 new_session()
                 break
-            # elif reports.lower() != 'c' or reports.lower() != 'r' or reports.lower() != 's' or reports.lower() != 'v':  # Why didn't you include 'd'?
-            #     continue
             else:
                 continue
 
