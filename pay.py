@@ -128,6 +128,7 @@ def run_payment():
         return credit
 
 def credit_name():
+    """Returns the actual name on user's credit card for comparison to the orderer's name. This function is called in the run_payment function itself."""
     while True:
         name = input("Please enter your name exactly as shown on your card: ")
         for letter in name:

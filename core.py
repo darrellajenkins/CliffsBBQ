@@ -1,13 +1,13 @@
+import admin
 import json
+import order
+import pay
 import random
 import sys
 import time
-import order
 import pay
-from pay import run_payment, credit_name
 import post
 from funcs import clr, bold, blk, italic, red, green, yellow, blue, purple, cyan
-from admin import Reports
 
 today = time.ctime()
 today_date = time.strftime('%B %d, %Y')
@@ -267,7 +267,7 @@ def new_session():
         a.order_details = a.all_order_details[0:-2]
         a.order_date = a.all_order_details[-2]
         a.order_time = a.all_order_details[-1]
-        cc_pay = run_payment()
+        cc_pay = pay.run_payment()
         name_on_credit_card = cc_pay
         a.credit_card_name = name_on_credit_card
         print(f"{green}Order is in the name of: {a.orderer_name()}.  Name on credit card: {a.credit_card_name}.{clr}")
@@ -328,7 +328,7 @@ def new_session():
                 a_survey.record_survey_details([a_survey.location, a_survey.survey_results, coupon, survey_ctc_email, Visitors.non_subscriber_info])
 
     if start.lower() == 's':
-        r = Reports()
+        r = admin.Reports()
         same_date = None
         while True:
             reports = input(f"\nReport {yellow}[c]ustomers,{clr} {cyan}[r]easons,{clr} {red}[s]urveys,{clr} {green}[v]ouchers,{clr} {purple} [d]etails on "
