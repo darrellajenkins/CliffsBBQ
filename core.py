@@ -85,7 +85,7 @@ class Visitors:
     def comeback(self):
         return f"{purple}We appreciate your business!  Please come back and see us soon!{clr}"
 
-    def ask_who(self):
+    def visitor_descrp(self):
         print(self.thanks())
         print("\nYou may be able to earn discounts on future visits. May we ask, what brought you in today?\n")
         for num, reason in Visitors.visit_reasons_dict.items():
@@ -113,11 +113,11 @@ class Visitors:
             Visitors.reasons_daily_totals = Visitors.startday_reasons_totals
         return Visitors.reasons_daily_totals
 
-    def who(self, ask):
-        if ask in Visitors.reasons_daily_totals.keys():
-            Visitors.reasons_daily_totals[ask][1] += 1
-            self.reason = (Visitors.reasons_daily_totals[ask][0])
-            self.reason_num = ask
+    def next_steps(self, type_of_visitor):
+        if type_of_visitor in Visitors.reasons_daily_totals.keys():
+            Visitors.reasons_daily_totals[type_of_visitor][1] += 1
+            self.reason = (Visitors.reasons_daily_totals[type_of_visitor][0])
+            self.reason_num = type_of_visitor
             self.visit_reason()
             self.print_it(self.acknowledge())
             self.hear_more()
@@ -273,7 +273,7 @@ def new_session():
         print(f"{green}Order is in the name of: {a.orderer_name()}.  Name on credit card: {a.credit_card_name}.{clr}")
 
         a.establish_start_day()
-        a.who(a.ask_who())
+        a.next_steps(a.visitor_descrp())
 
         if a.discount_given():
             a_coupon = post.Coupon()
