@@ -7,6 +7,7 @@ conception to implementation. The console version is complete as of 10/06/2024,
 but I am still working on a front end web deployed version. The modules 
 created are the culmination of many concepts I have learned since 
 July 2023. After reading several books and adhering to a strategy
-of coding daily, I feel comfortable and confident enough to find solutions in 
+of coding daily, I am comfortable and confident to find solutions in 
 Python or other languages.
 </div>
+
