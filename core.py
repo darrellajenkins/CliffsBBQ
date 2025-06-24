@@ -10,7 +10,7 @@ import post
 from funcs import clr, bold, blk, italic, red, green, yellow, blue, purple, cyan
 
 today = time.ctime()
-today_date = time.strftime('%B %d, %Y')
+today_date = time.strftime('%B %d, %Y')  # Note there is a comma here. Files must be saved and read with the comma.
 today_time = time.strftime('%I:%M:%S %p')
 
 class Visitors:

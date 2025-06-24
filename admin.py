@@ -4,7 +4,9 @@ from funcs import clr, bold, blk, italic, red, green, yellow, blue, purple, cyan
 
 
 class Reports:
-    """Provides daily reports by date for customers, reasons for visiting, survey data, vouchers issued, and additional details from surveys."""
+    """Provides daily reports by date for customers, reasons for visiting, survey data, vouchers issued, and additional details from surveys.
+        Reports will only pull if they have a comma in the date. Previous files without dates in the filename will not be read.
+        See core.py variable 'today_date' for the format of the date."""
     def __init__(self):
 
         self.name = ""
