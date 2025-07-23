@@ -15,7 +15,7 @@ today_date = time.strftime('%B %d, %Y')  # Note there is a comma here. Files mus
 today_time = time.strftime('%I:%M:%S %p')
 
 class Visitors:
-    """This is the core of the entire system. Visitors to the store are the most important part so everything begins here."""
+    """This is the heart of the entire system. Visitors to the store are the most important part so everything begins here."""
     discount_1 = 'please enjoy a $2 discount on your next visit to any of our stores.'
     discount_2 = 'please enjoy a 10% discount on your next visit to any of our stores.'
     discount_3 = 'please enjoy a 15% discount on your next visit to any of our stores.'

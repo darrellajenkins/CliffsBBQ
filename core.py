@@ -17,7 +17,7 @@ today_time = time.strftime('%I:%M:%S %p')
 
 
 def new_session():
-    """Runs a new order session for a customer regardless of whether or not they have previously visited."""
+    """This is the core function that runs a new order session for a customer regardless of whether or not they have previously visited."""
     while True:
         start = input(f"[B]egin session or [S]ee reports? {bold}B or S{clr}:  ")
         if start.lower() != 'b'.lower() and start.lower() != 's'.lower():
@@ -106,96 +106,81 @@ def new_session():
                     while True:
                         ques = input("Would you like to use the same date as before? [Y]es or [N]o ")
                         if ques.lower() == 'y':
-                            # same_date = rpt_date
                             r.report_custs(rpt_date)
                             break
                         elif ques.lower() == 'n':
                             rpt_date = r.get_date()
                             r.report_custs(rpt_date)
-                            # same_date = rpt_date
                             break
                         elif ques.lower() != 'y' or ques.lower() != 'n':
                             continue
                 else:
                     rpt_date = r.get_date()
                     r.report_custs(rpt_date)
-                    # same_date = rpt_date
             elif reports.lower() == 'r':
                 if rpt_date:
                     while True:
                         ques = input("Would you like to use the same date as before? [Y]es or [N]o ")
                         if ques.lower() == 'y':
-                            # same_date = rpt_date
                             r.report_reasons(rpt_date)
                             break
                         elif ques.lower() == 'n':
                             rpt_date = r.get_date()
                             r.report_reasons(rpt_date)
-                            # same_date = rpt_date
                             break
                         elif ques.lower() != 'y' or ques.lower() != 'n':
                             continue
                 else:
                     rpt_date = r.get_date()
                     r.report_reasons(rpt_date)
-                    # same_date = rpt_date
             elif reports.lower() == 's':
                 if rpt_date:
                     while True:
                         ques = input("Would you like to use the same date as before? [Y]es or [N]o ")
                         if ques.lower() == 'y':
-                            # same_date = rpt_date
                             r.report_surveys(rpt_date)
                             break
                         elif ques.lower() == 'n':
                             rpt_date = r.get_date()
                             r.report_surveys(rpt_date)
-                            # same_date = rpt_date
                             break
                         elif ques.lower() != 'y' or ques.lower() != 'n':
                             continue
                 else:
                     rpt_date = r.get_date()
                     r.report_surveys(rpt_date)
-                    # same_date = rpt_date
             elif reports.lower() == 'd':
                 if rpt_date:
                     while True:
                         ques = input("Would you like to use the same date as before? [Y]es or [N]o ")
                         if ques.lower() == 'y':
-                            # same_date = rpt_date
                             r.survey_contact_details(rpt_date)
                             break
                         elif ques.lower() == 'n':
                             rpt_date = r.get_date()
                             r.survey_contact_details(rpt_date)
-                            # same_date = rpt_date
                             break
                         elif ques.lower() != 'y' or ques.lower() != 'n':
                             continue
                 else:
                     rpt_date = r.get_date()
                     r.survey_contact_details(rpt_date)
-                    # same_date = rpt_date
             elif reports.lower() == 'v':
                 if rpt_date:
                     while True:
                         ques = input("Would you like to use the same date as before? [Y]es or [N]o ")
                         if ques.lower() == 'y':
-                            # same_date = rpt_date
                             r.report_daily_vouchers(rpt_date)
                             break
                         elif ques.lower() == 'n':
                             rpt_date = r.get_date()
                             r.report_daily_vouchers(rpt_date)
-                            # same_date = rpt_date
                             break
                         elif ques.lower() != 'y' or ques.lower() != 'n':
                             continue
                 else:
                     rpt_date = r.get_date()
                     r.report_daily_vouchers(rpt_date)
-                    # same_date = rpt_date
             elif reports.lower() == 'p':
                 new_session()
                 break
